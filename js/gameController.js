@@ -1,6 +1,11 @@
 var stateElements = [];
 var state = 0;
 var players;
+
+// ##############################
+//  Initialization and listeners
+// ##############################
+
 $(document).ready(function () {
 //    Initialize Game State
     players = new NameList();
@@ -14,24 +19,37 @@ $(document).ready(function () {
         stateElements[e].css("display","none");
     }
     animateIn(stateElements[0]);
+
+    $("#nameInput").keyup(function(event) {
+        var key = event.which;
+        console.log(key);
+        if (key === 13) {
+            addName();
+        }
+    });
 });
 
-//#########################
-// State Specific Functions
-//#########################
+
+
+
+
+// ##########################
+//  State Specific Functions
+// ##########################
 
 function startGame() {
     changeState(1);
 }
 
-function addName(){
+function addName() {
     var n = $("#nameInput").val();
     players.addName(n,$("#namesList"));
+    $("#nameInput").val('');
 }
 
-//####################
-// Animation Functions
-//####################
+// #####################
+//  Animation Functions
+// #####################
 
 function changeState(to){
     animateOut(stateElements[state]);

@@ -1,6 +1,10 @@
 function NameList() {
     this.list = [];
     this.addName = function(name,insertionPoint) {
+        if(name.length === 0){
+            console.log("empty!")
+            return;
+        }
         for (var n in this.list){
             if(name === this.list[n]){
                 console.log("Whoops!");

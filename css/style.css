@@ -23,3 +23,6 @@ html,body{
     overflow: auto;
     overflow-x: hidden;
 }
+#namesList li{
+    text-align: left;
+}
