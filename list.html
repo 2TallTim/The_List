@@ -2,54 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>The List</title>
 
     <link rel="stylesheet" href="css/bootstrap.css">
-    <script
-            src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-
-    <script src="js/jquery-ui.min.js"></script>
-
-    <script src="js/bootstrap.js"></script>
-    <script src="js/bootstrap.bundle.js"></script>
-    <script src="js/nameList.js"></script>
-    <script src="js/gameController.js"></script>
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
+    <!--Loading Splash-->
+    <div class="container-fluid frame" id="loadingFrame">
+        <div class="row align-items-center centerRow">
+            <div class="col text-center">
+                Loading...
+            </div>
+        </div>
+    </div>
     <!--Intro Splash Screen-->
     <div class="container-fluid frame" id="welcomeFrame">
         <div class="row align-items-center centerRow" id="welcomeRow">
             <div class="col text-center">
-                <h1>Welcome to The List!</h1>
-                <button class="btn btn-primary btn-lg" role="button" onclick="startGame()">Get Started</button>
+                <h1 class="display-1">The List</h1>
+                <button class="btn btn-primary btn-lg" role="button" onclick="stateAddNames()">Get Started</button>
+                <p id="desc">"It's like 'Fuck, Kill, Marry", but different, and way better"</p>
             </div>
         </div>
     </div>
+
     <!--Name Adding Screen-->
     <div class="container-fluid frame" id="addNameFrame">
-        <div class="row align-items-center justify-content-center centerRow">
-            <div class="col-md-8 text-center">
+        <div class="row align-items-sm-center justify-content-center centerRow" id="an-row">
+            <div class="col-lg-8 text-center">
                 <h1>Add Names</h1>
-                <p>The List is more fun with more friends, but you can play with as few as 4 people.</p>
-                <div class="input-group input-group-lg" id="nameInputGrp">
+                <p>The List is best with 6-12 friends, but you can play with as few as 4 people.</p>
+                <div class="input-group input-group-lg sm-to-60" id="nameInputGrp">
                     <input type="text" class="form-control" id="nameInput" placeholder="Add a player">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" onclick="addName()">+</button>
+                        <button class="btn btn-primary" onclick="new function(){addName();document.getElementById('nameInput').focus(); }">+</button>
                     </div>
                 </div>
-                <div id="alerts"></div>
-                <ul class="list-group" id="namesList">
-
-                </ul>
+                <div id="alerts" class="sm-to-60"></div>
+                <ul class="list-group sm-to-60" id="namesList"></ul>
+                <button id="selectVariant" class="btn btn-primary btn-lg sm-to-60" role="button">Select Variant</button>
             </div>
         </div>
     </div>
+
     <!--Main Game Screen-->
     <div class="container-fluid frame" id="gameFrame">
         <h1>The List</h1>
     </div>
+    <script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/gameController.js"></script>
+    <script src="js/nameList.js"></script>
 </body>
+
 </html>

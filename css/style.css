@@ -7,13 +7,47 @@ html,body{
 .centerRow{
     height: 100%;
 }
+
 .frame{
     height: 100%;
     position: absolute;
 }
-#nameInputGrp{
-    width: 60%;
-    min-width: 576px;
+.frame:not(#loadingFrame){
+    display: none;
+}
+#loadingFrame{
+    z-index: 1000;
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: 700;
+}
+/*Intro Screen*/
+#desc{
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/*Names List*/
+#an-row{
+    padding-top: 1rem;
+}
+
+@media screen and (min-device-width: 577px) {
+    .sm-to-60 {
+        width: 576px;
+        min-width: 60%;
+        max-width: 100%;
+    }
+}
+@media screen and (max-device-width: 576px){
+    .sm-to-60{
+        width: 100%;
+    }
+}
+
+.sm-to-60{
     margin: 0 auto;
 }
 
@@ -23,6 +57,23 @@ html,body{
     overflow: auto;
     overflow-x: hidden;
 }
+
 #namesList li{
+    padding: 0.5rem 0.75rem;
     text-align: left;
+    font-size: 1.2rem;
+}
+
+.nl-remove{
+    font-weight: 700;
+}
+
+.nl-remove a{
+    text-decoration: none;
+}
+
+#selectVariant{
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    position: relative;
 }
