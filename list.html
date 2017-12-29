@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The List</title>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+
+    <script src="js/jquery-ui.min.js"></script>
+
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/nameList.js"></script>
+    <script src="js/gameController.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!--Intro Splash Screen-->
+    <div class="container-fluid frame" id="welcomeFrame">
+        <div class="row align-items-center centerRow" id="welcomeRow">
+            <div class="col text-center">
+                <h1>Welcome to The List!</h1>
+                <button class="btn btn-primary btn-lg" role="button" onclick="startGame()">Get Started</button>
+            </div>
+        </div>
+    </div>
+    <!--Name Adding Screen-->
+    <div class="container-fluid frame" id="addNameFrame">
+        <div class="row align-items-center justify-content-center centerRow">
+            <div class="col-md-8 text-center">
+                <h1>Add Names</h1>
+                <p>The List is more fun with more friends, but you can play with as few as 4 people.</p>
+                <div class="input-group input-group-lg" id="nameInputGrp">
+                    <input type="text" class="form-control" id="nameInput" placeholder="Add a player">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" onclick="addName()">+</button>
+                    </div>
+                </div>
+                <div id="alerts"></div>
+                <ul class="list-group" id="namesList">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--Main Game Screen-->
+    <div class="container-fluid frame" id="gameFrame">
+        <h1>The List</h1>
+    </div>
+</body>
+</html>
