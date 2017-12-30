@@ -77,3 +77,11 @@ html,body{
     font-size: 1.5rem;
     position: relative;
 }
+
+/*Variant Selection*/
+#selectVariantFrame button{
+    display: block;
+    clear: both;
+    white-space: normal;
+    margin-top: 1rem;
+}

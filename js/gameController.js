@@ -9,9 +9,10 @@ $(document).ready(function () {
 //    Initialize Game State
     console.log("Ready!");
     stateElements = [
-        $("#welcomeFrame"), // 0
-        $("#addNameFrame"), // 1
-        $("#gameFrame")     // 2
+        $("#welcomeFrame"),         // 0
+        $("#addNameFrame"),         // 1
+        $("#selectVariantFrame"),   // 2
+        $("#gameFrame")             // 3
     ];
     for (var e in stateElements){
         stateElements[e].css("display","none");
@@ -21,7 +22,7 @@ $(document).ready(function () {
 
     $("#nameInput").keyup(function(event) {
         var key = event.which;
-        if (key === 13) {
+        if (key === 13) { //Enter key
             addName();
         }
     });
@@ -40,6 +41,10 @@ function stateAddNames() {
     changeState(1);
 }
 
+function stateSelectVariant() {
+    changeState(2);
+}
+
 function addName() {
     var n = $("#nameInput").val();
     NameList.addName(n,$("#namesList"));
@@ -51,33 +56,55 @@ function addName() {
 // #####################
 
 function changeState(to){
-    animateOut(stateElements[state]);
-    animateIn(stateElements[to]);
+    if(to>state) { //reverse animation if we're going backwards
+        animateOut(stateElements[state]);
+        animateIn(stateElements[to]);
+    }else{
+        animateOut(stateElements[state],true);
+        animateIn(stateElements[to],true);
+    }
     state = to;
 }
 
-function animateOut(obj){
-    obj.css("display","initial");
+function animateOut(obj,reverse=false){
+    obj.css("display","block");
     obj.css("opacity",1);
-    obj.css("top",0);
-    obj.animate({
-            opacity:0,
-            top: "-100px"
-        },
-        300,
-        function() {
-            obj.css("display","none");
-        }
-    )
+    obj.css("left",0);
+    if(reverse){
+        obj.animate({
+                opacity: 0,
+                left: "300px"
+            },
+            400,
+            function () {
+                obj.css("display", "none");
+            }
+        );
+    }else {
+        obj.animate({
+                opacity: 0,
+                left: "-300px"
+            },
+            400,
+            function () {
+                obj.css("display", "none");
+            }
+        );
+    }
 }
 
-function animateIn(obj){
-    obj.css("display","initial");
+function animateIn(obj,reverse=false){
+    obj.css("display","block");
     obj.css("opacity",0);
-    obj.css("top", "100px");
+    if(reverse){
+        obj.css("left","-400px");
+    }else {
+        obj.css("left", "400px");
+    }
+
     obj.animate({
-            opacity:1,
-            top: "0px"
-        },300
-    )
+            opacity: 1,
+            left: "0px"
+        }, 500
+    );
 }
