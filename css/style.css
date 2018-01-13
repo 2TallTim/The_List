@@ -9,12 +9,79 @@ html,body{
 }
 
 .frame{
+    display:block;
     height: 100%;
     position: absolute;
 }
-.frame:not(#loadingFrame){
-    display: none;
+
+.slide-in-left{
+    animation: anim-left 300ms;
+    animation-fill-mode: forwards;
+    animation-delay: 150ms;
+    -webkit-animation-timing-function: ease-out;
+    -moz-animation-timing-function: ease-out;
+    -o-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
 }
+
+.slide-out-left{
+    animation: anim-left 200ms;
+    animation-fill-mode: forwards;
+    animation-direction: reverse;
+
+    -webkit-animation-timing-function: ease-in;
+    -moz-animation-timing-function: ease-in;
+    -o-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+}
+
+.slide-in-right{
+    animation: anim-right 300ms;
+    animation-fill-mode: forwards;
+    animation-delay: 150ms;
+    -webkit-animation-timing-function: ease-out;
+    -moz-animation-timing-function: ease-out;
+    -o-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+}
+
+.slide-out-right{
+    animation: anim-right 200ms;
+    animation-fill-mode: forwards;
+    animation-direction: reverse;
+    -webkit-animation-timing-function: ease-in;
+    -moz-animation-timing-function: ease-in;
+    -o-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+}
+
+
+@keyframes anim-left {
+    from{
+        transform:translateX(-300px);
+        opacity: 0;
+        z-index: 0;
+    }
+    to{
+        transform:translateX(0px);
+        opacity: 1;
+        z-index: 100;
+    }
+}
+
+@keyframes anim-right {
+    from{
+        transform:translateX(300px);
+        opacity: 0;
+        z-index: 0;
+    }
+    to{
+        transform:translateX(0px);
+        opacity: 1;
+        z-index: 100;
+    }
+}
+
 #loadingFrame{
     z-index: 1000;
     background-color: #007bff;

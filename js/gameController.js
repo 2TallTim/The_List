@@ -15,7 +15,7 @@ $(document).ready(function () {
         $("#gameFrame")             // 3
     ];
     for (var e in stateElements){
-        stateElements[e].css("display","none");
+        stateElements[e].css("opacity","0");
     }
 
     animateIn(stateElements[0],false);
@@ -101,44 +101,25 @@ function changeState(to){
 }
 
 function animateOut(obj, reverse){
-    obj.css("display","block");
-    obj.css("opacity",1);
-    obj.css("left",0);
     if(reverse){
-        obj.animate({
-                opacity: 0,
-                left: "300px"
-            },
-            400,
-            function () {
-                obj.css("display", "none");
-            }
-        );
+        obj.removeClass("slide-in-left slide-in-right slide-out-left").css("opacity",1);
+        setTimeout(function(){ obj.addClass("slide-out-right");}, 1);
     }else {
-        obj.animate({
-                opacity: 0,
-                left: "-300px"
-            },
-            400,
-            function () {
-                obj.css("display", "none");
-            }
-        );
+        obj.removeClass("slide-in-left slide-in-right slide-out-right").css("opacity",1);
+        setTimeout(function(){ obj.addClass("slide-out-left"); }, 1);
+
     }
 }
 
 function animateIn(obj,reverse){
     obj.css("display","block");
-    obj.css("opacity",0);
     if(reverse){
-        obj.css("left","-400px");
+        obj.removeClass("slide-out-left slide-out-right slide-in-right").css("opacity",0);
+        void obj.get().offsetWidth;
+        setTimeout(function(){ obj.addClass("slide-in-left");}, 1);
     }else {
-        obj.css("left", "400px");
-    }
+        obj.removeClass("slide-out-left slide-out-right slide-in-left").css("opacity",0);
+        setTimeout(function(){ obj.addClass("slide-in-right");}, 1);
 
-    obj.animate({
-            opacity: 1,
-            left: "0px"
-        }, 500
-    );
+    }
 }

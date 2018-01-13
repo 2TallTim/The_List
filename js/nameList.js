@@ -11,6 +11,7 @@ function NameList() {
     };
 
     NameList.addName = function(name,insertionPoint) {
+        name = name.trim();
         if(name.length === 0){
             return;
         }
