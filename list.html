@@ -43,27 +43,43 @@
                 </div>
                 <div id="alerts" class="sm-to-60"></div>
                 <ul class="list-group sm-to-60" id="namesList"></ul>
-                <button id="selectVariant" class="btn btn-primary btn-lg sm-to-60" role="button" onclick="stateSelectVariant()">Select Variant</button>
+                <button id="selectVariant" class="btn btn-primary btn-lg sm-to-60" role="button" onclick="nextAddNames()">Select Variant</button>
             </div>
         </div>
     </div>
 
     <!--Variant Selection Screen-->
     <div class="container-fluid frame" id="selectVariantFrame">
-        <div class="row align-items-sm-center justify-content-center centerRow" id="an-row">
+        <div class="row align-items-sm-center justify-content-center centerRow" id="vs-row">
             <div class="col-lg-8 text-center">
                 <h2>Pick a Variant:</h2>
                 <a href="#" class="sm-to-60" onclick="stateAddNames()">or add more names</a>
-                <button class="btn btn-outline-primary sm-to-60"><h2>Tame</h2><p>This one's boring.</p></button>
-                <button class="btn btn-primary sm-to-60"><h2>Standard</h2><p>The best variant to start off with</p></button>
-                <button class="btn btn-outline-primary sm-to-60"><h2>NSFW</h2><p>This one's gonna get awkward. It's a good time, though.</p></button>
+                <button onclick="stateStartGame(0)" class="btn btn-outline-primary sm-to-60"><h2>Tame</h2><p>This one's boring.</p></button>
+                <button onclick="stateStartGame(1)" class="btn btn-primary sm-to-60"><h2>Standard</h2><p>The best variant to start off with</p></button>
+                <button onclick="stateStartGame(2)" class="btn btn-outline-primary sm-to-60"><h2>NSFW</h2><p>This one's gonna get awkward. It's a good time, though.</p></button>
             </div>
         </div>
     </div>
 
     <!--Main Game Screen-->
     <div class="container-fluid frame" id="gameFrame">
-        <h1>The List</h1>
+        <div class="row align-items-sm-center justify-content-center centerRow">
+            <div class="col-8 text-center">
+                <h1 class="display-1">The List</h1>
+                <p><a href="#" onclick="stateAddNames()">Add more names</a> or <a href="#" onclick="stateSelectVariant()">pick a different variant</a></p>
+                <h2 class="gs-opt"><span class="text-primary" id="picker"></span><span class="font-weight-light">, choosing between</span></h2>
+                <h1 class="gs-opt" id="p1"></h1>
+                <h1 class="gs-opt" id="p2"></h1>
+                <h1 class="gs-opt"><span class="font-weight-light">and </span><span id="p3"></span></h1>
+
+                <h2 class="font-weight-light">Who would you...</h2>
+
+                <h1 class="gs-opt" id="o1"></h1>
+                <h1 class="gs-opt" id="o2"></h1>
+                <h1 class="gs-opt" ><span class="font-weight-light">and </span><span id="o3"></span></h1>
+                <button class="btn btn-lg btn-primary sm-to-60" onclick="genRound()">Play another round</button>
+            </div>
+        </div>
     </div>
     <script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="></script>
     <script src="js/jquery-ui.min.js"></script>
@@ -71,6 +87,7 @@
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/gameController.js"></script>
     <script src="js/nameList.js"></script>
+    <script src="js/optionsList.js"></script>
 </body>
 
 </html>

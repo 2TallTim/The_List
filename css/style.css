@@ -2,7 +2,7 @@
 html,body{
     height: 100%;
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 .centerRow{
     height: 100%;
@@ -84,4 +84,8 @@ html,body{
     clear: both;
     white-space: normal;
     margin-top: 1rem;
+}
+/*Game Screen*/
+.gs-opt{
+    font-size: 3rem;
 }

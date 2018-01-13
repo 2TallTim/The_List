@@ -1,6 +1,6 @@
 var stateElements = [];
 var state = 0;
-
+var activeVariant = -1;
 // ##############################
 //  Initialization and listeners
 // ##############################
@@ -18,7 +18,7 @@ $(document).ready(function () {
         stateElements[e].css("display","none");
     }
 
-    animateIn(stateElements[0]);
+    animateIn(stateElements[0],false);
 
     $("#nameInput").keyup(function(event) {
         var key = event.which;
@@ -30,6 +30,7 @@ $(document).ready(function () {
     $("#selectVariant").css("display","none");
 
     NameList();
+
     $("#loadingFrame").css("display","none");
 });
 
@@ -37,18 +38,51 @@ $(document).ready(function () {
 //  State Specific Functions
 // ##########################
 
+function nextAddNames() {
+    if(activeVariant !== -1){
+        stateStartGame(activeVariant);
+    }else{
+        stateSelectVariant();
+    }
+}
+
 function stateAddNames() {
     changeState(1);
 }
 
 function stateSelectVariant() {
+    //When we come back to this screen
+    $("#selectVariant").text("Return to game");
     changeState(2);
+}
+
+function stateStartGame(variant){
+    activeVariant = variant;
+    OptionsList(variant);
+    changeState(3);
+    NameList.initializeSelector();
 }
 
 function addName() {
     var n = $("#nameInput").val();
     NameList.addName(n,$("#namesList"));
     $("#nameInput").val('');
+}
+// ####################
+//  Gameplay Functions
+// ####################
+
+function genRound() {
+    var players = NameList.selectPlayers();
+    var choices = OptionsList.selectOptions();
+    $("#picker").text(players[0]);
+    $("#p1").text(players[1]+",");
+    $("#p2").text(players[2]+",");
+    $("#p3").text(players[3]);
+
+    $("#o1").text(choices[0]+",");
+    $("#o2").text(choices[1]+",");
+    $("#o3").text(choices[2]+"?");
 }
 
 // #####################
@@ -57,8 +91,8 @@ function addName() {
 
 function changeState(to){
     if(to>state) { //reverse animation if we're going backwards
-        animateOut(stateElements[state]);
-        animateIn(stateElements[to]);
+        animateOut(stateElements[state],false);
+        animateIn(stateElements[to],false);
     }else{
         animateOut(stateElements[state],true);
         animateIn(stateElements[to],true);
@@ -66,7 +100,7 @@ function changeState(to){
     state = to;
 }
 
-function animateOut(obj,reverse=false){
+function animateOut(obj, reverse){
     obj.css("display","block");
     obj.css("opacity",1);
     obj.css("left",0);
@@ -93,7 +127,7 @@ function animateOut(obj,reverse=false){
     }
 }
 
-function animateIn(obj,reverse=false){
+function animateIn(obj,reverse){
     obj.css("display","block");
     obj.css("opacity",0);
     if(reverse){
