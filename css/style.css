@@ -26,7 +26,7 @@ html,body{
 
 .slide-out-left{
     animation: anim-left 200ms;
-    animation-fill-mode: forwards;
+    animation-fill-mode: both;
     animation-direction: reverse;
 
     -webkit-animation-timing-function: ease-in;
@@ -47,7 +47,7 @@ html,body{
 
 .slide-out-right{
     animation: anim-right 200ms;
-    animation-fill-mode: forwards;
+    animation-fill-mode: both;
     animation-direction: reverse;
     -webkit-animation-timing-function: ease-in;
     -moz-animation-timing-function: ease-in;
@@ -101,19 +101,6 @@ html,body{
     padding-top: 1rem;
 }
 
-@media screen and (min-device-width: 577px) {
-    .sm-to-60 {
-        width: 576px;
-        min-width: 60%;
-        max-width: 100%;
-    }
-}
-@media screen and (max-device-width: 576px){
-    .sm-to-60{
-        width: 100%;
-    }
-}
-
 .sm-to-60{
     margin: 0 auto;
 }
@@ -155,4 +142,41 @@ html,body{
 /*Game Screen*/
 .gs-opt{
     font-size: 3rem;
+}
+#another{
+    margin-top: .5rem;
+}
+
+@media screen and (min-device-width: 577px) {
+    .sm-to-60 {
+        width: 576px;
+        min-width: 60%;
+        max-width: 100%;
+    }
+}
+@media screen and (max-device-width: 576px){
+    .sm-to-60{
+        width: 100%;
+    }
+    #namesList li{
+        font-size: 1rem;
+        padding: 0.3rem 0.5rem;
+    }
+    #an-btn,#nameInput{
+        line-height: 24px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .display-1{
+        font-size: 2.5rem;
+    }
+    .gs-opt{
+        font-size: 2.25rem;
+        display: inline;
+    }
+    .gs-opt:last-of-type{
+        margin-bottom: 0.5rem;
+        display: inline-block;
+    }
 }
